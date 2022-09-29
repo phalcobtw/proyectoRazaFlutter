@@ -1,4 +1,5 @@
 import 'package:dogapi/vistas/vista_creandose.dart';
+import 'package:dogapi/vistas/vista_esperandoraza.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,6 +39,9 @@ class Aplicacion extends StatelessWidget {
           var estado = context.watch<ClaseBloc>().state;
           if (estado is Creandose) {
             return VistaCreandose();
+          }
+          if (estado is SolicitandoRaza) {
+            return VistaSolicitandoRazaSTF();
           }
           return const Center(child: Text('ERROR'),);
         }),
