@@ -5,23 +5,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc.dart';
 
 void main() {
-  runApp(AplicacionInyectada());
+  runApp(const AplicacionInyectada());
 }
 
 class AplicacionInyectada extends StatelessWidget {
-  const AplicacionInyectada({super.key});
+  const AplicacionInyectada({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) { 
-        ClaseBloc blocVerificacion = ClaseBloc();
-        Future.delayed(Duration(seconds: 2),(() {
+      create: (context) {
+        ClaseBloc blocVerificacion=ClaseBloc();
+        Future.delayed(Duration(seconds: 2),(){
           blocVerificacion.add(Creado());
-        }));
+        });
         return blocVerificacion;
       },
-      child: Container(),
+      child: const Aplicacion(),
     );
   }
 }
