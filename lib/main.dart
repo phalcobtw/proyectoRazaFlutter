@@ -1,8 +1,10 @@
+import 'package:dogapi/problemas.dart';
 import 'package:dogapi/repositorio_verificacion.dart';
 import 'package:dogapi/vistas/vista_creandose.dart';
 import 'package:dogapi/vistas/vista_esperandoraza.dart';
 import 'package:dogapi/vistas/vista_razaconfirmada.dart';
 import 'package:dogapi/vistas/vista_razanoconfirmada.dart';
+import 'package:dogapi/vistas/vista_sinsubrazas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,6 +53,9 @@ class Aplicacion extends StatelessWidget {
           }
           if (estado is MostrarRazaNoConfirmada) {
             return VistaRazaNoConfirmada(raza: estado.raza);
+          }
+          if (estado is MostrarSinSubraza) {
+            return VistaSinSubrazas(raza: estado.raza);
           }
           return const Center(child: Text('ERROR'),);
         }),
