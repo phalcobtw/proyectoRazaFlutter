@@ -1,30 +1,21 @@
 const String mensajeRegistroRaza = 'Error de registro de raza';
-const String mensajeCampoVacio = 'Sin Raza/Subraza';
+const String mensajeCampoVacio = 'Sin Raza/Subrazas';
 
 class RegistroRaza{
-  late String raza;
-  late String subraza;
+  late final String raza;
+  late final List<String> subraza;
   RegistroRaza._(this.raza,this.subraza);
   factory RegistroRaza.constructor(
     {
       required String propuestaRaza,
-      required String propuestaSubRaza
+      required List<String> propuestasubRaza
     }
   ){
-    String valorRaza = propuestaRaza;
-    String valorSubRaza = propuestaSubRaza;
-    if (valorRaza.isEmpty) {
+    if (propuestaRaza.trim().isEmpty) {
       throw mensajeRegistroRaza;
     }
-    if (valorSubRaza.isEmpty) {
-      throw mensajeCampoVacio;
-    }
-    propuestaRaza = propuestaRaza.trim().isEmpty ? mensajeCampoVacio : propuestaRaza;
-    propuestaSubRaza = propuestaSubRaza.trim().isEmpty ? mensajeCampoVacio : propuestaSubRaza;
-
-    final resultado = RegistroRaza._(propuestaRaza, propuestaSubRaza);
-
+    RegistroRaza._(propuestaRaza, propuestasubRaza);
+    final resultado = RegistroRaza._(propuestaRaza, propuestasubRaza);
     return resultado;
-    
   }
 }
