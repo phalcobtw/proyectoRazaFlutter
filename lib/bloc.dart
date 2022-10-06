@@ -1,5 +1,6 @@
 import 'package:dogapi/problemas.dart';
 import 'package:dogapi/raza_formada.dart';
+import 'package:dogapi/registro_raza.dart';
 import 'package:dogapi/repositorio_verificacion.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,8 +26,10 @@ class SolicitandoRaza extends EstadoVerificacion{}
 
 class EsperandoConfirmacionRaza extends EstadoVerificacion{}
 
-class MostrarRaza extends EstadoVerificacion{
-
+class MostrarRazaConfirmada extends EstadoVerificacion{
+  final RegistroRaza registro;
+  final RazaFormada raza;
+  MostrarRazaConfirmada(this.registro,this.raza);
 }
 
 class MostrarRazaNoConfirmada extends EstadoVerificacion{
@@ -48,9 +51,12 @@ class ClaseBloc extends Bloc<EventoVerificacion, EstadoVerificacion> {
       emit(EsperandoConfirmacionRaza());
       final resultado = _repositorioVerificacion.obtenerRegistroRaza(event.raza);
       resultado.match((l) {
-        if (l is VersionIncorrectaJson) emit(MostrarErrorVersion());
-        if(l is RazaNoRegistrada) emit(MostrarRazaNoRegistrada());
-      }, (r) => null);
+        /* if (l is VersionIncorrectaJson) emit(MostrarErrorVersion()); */
+        if(l is sinSubRazas) emit(MostrarSinSubraza(event.raza));
+        if(l is RazaNoRegistrada) emit(MostrarRazaNoConfirmada(event.raza));
+      }, (r) {
+        emit(MostrarRazaConfirmada(r, event.raza));
+      });
     },);
   }
 }
