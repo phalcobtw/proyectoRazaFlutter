@@ -15,6 +15,11 @@ class RazaRecibida extends EventoVerificacion{
 
 class RazaConfirmada extends EventoVerificacion{}
 
+class sinSubRazasE extends EventoVerificacion{
+  final RazaFormada raza;
+  sinSubRazasE(this.raza);
+}
+
 
 
 
@@ -52,7 +57,7 @@ class ClaseBloc extends Bloc<EventoVerificacion, EstadoVerificacion> {
       final resultado = _repositorioVerificacion.obtenerRegistroRaza(event.raza);
       resultado.match((l) {
         /* if (l is VersionIncorrectaJson) emit(MostrarErrorVersion()); */
-        if(l is sinSubRazas) emit(MostrarSinSubraza(event.raza));
+        if(l is sinSubRazasE) emit(MostrarSinSubraza(event.raza));
         if(l is RazaNoRegistrada) emit(MostrarRazaNoConfirmada(event.raza));
       }, (r) {
         emit(MostrarRazaConfirmada(r, event.raza));
