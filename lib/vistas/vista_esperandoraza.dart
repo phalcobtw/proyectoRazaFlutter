@@ -56,10 +56,11 @@ class _VistaSolicitandoRazaSTFState extends State<VistaSolicitandoRazaSTF> {
         TextButton(onPressed: isButtonActive ? () {
           setState(() => isButtonActive = false,);
           var bloc = context.read<ClaseBloc>();
-          bloc.add(RazaRecibida(controller.text));
+          /* bloc.add(RazaRecibida(controller.text)); */
+          bloc.add(RazaRecibida());
           controller.clear();
         }:null, child: Text('Siguiente'))
       ],
-    )
+    );
   }
 }
