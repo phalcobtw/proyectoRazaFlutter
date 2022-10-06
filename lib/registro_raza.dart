@@ -3,12 +3,12 @@ const String mensajeCampoVacio = 'Sin Raza/Subrazas';
 
 class RegistroRaza{
   late final String raza;
-  late final List<String> subraza;
+  late final String subraza;
   RegistroRaza._(this.raza,this.subraza);
   factory RegistroRaza.constructor(
     {
       required String propuestaRaza,
-      required List<String> propuestasubRaza
+      required String propuestasubRaza
     }
   ){
     if (propuestaRaza.trim().isEmpty) {
