@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   blocTest<ClaseBloc, EstadoVerificacion>(
-    'emits [MyState] when MyEvent is added.',
+    'emite el estado cuando sucede Creado',
     build: () => ClaseBloc(),
     act: (bloc) => bloc.add(Creado()),
     expect: () => const [isA<SolicitandoRaza>],
