@@ -18,7 +18,8 @@ void main() {
     resultado.match((l) {
 
     }, (r) {
-      expect(r.subraza, equals(["afghan","basset","blood","english","ibizan","plott","walker"]));
+      expect(r.raza, equals("hound"));
+      expect(r.subraza, equals("[afghan, basset, blood, english, ibizan, plott, walker]"));
     });
   });
   test('no existente', () {
