@@ -6,9 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc.dart';
 
 class VistaRazaConfirmada extends StatelessWidget {
-  const VistaRazaConfirmada({super.key, required this.registro, required this.raza});
   final RegistroRaza registro;
   final RazaFormada raza;
+  const VistaRazaConfirmada({super.key, required this.registro, required this.raza});
+ 
 
   @override
   Widget build(BuildContext context) {
