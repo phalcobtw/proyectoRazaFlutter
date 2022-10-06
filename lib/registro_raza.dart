@@ -1,5 +1,5 @@
 const String mensajeRegistroRaza = 'Error de registro de raza';
-const String mensajeCampoVacio = 'Sin Valor';
+const String mensajeCampoVacio = 'Sin Raza/Subraza';
 
 class RegistroRaza{
   late String raza;
@@ -12,8 +12,12 @@ class RegistroRaza{
     }
   ){
     String valorRaza = propuestaRaza;
+    String valorSubRaza = propuestaSubRaza;
     if (valorRaza.isEmpty) {
       throw mensajeRegistroRaza;
+    }
+    if (valorSubRaza.isEmpty) {
+      throw mensajeCampoVacio;
     }
     propuestaRaza = propuestaRaza.trim().isEmpty ? mensajeCampoVacio : propuestaRaza;
     propuestaSubRaza = propuestaSubRaza.trim().isEmpty ? mensajeCampoVacio : propuestaSubRaza;
