@@ -1,3 +1,4 @@
+import 'package:dogapi/raza_formada.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,7 +57,7 @@ class _VistaSolicitandoRazaSTFState extends State<VistaSolicitandoRazaSTF> {
         TextButton(onPressed: isButtonActive ? () {
           setState(() => isButtonActive = false,);
           var bloc = context.read<ClaseBloc>();
-          bloc.add(RazaRecibida(controller.text));
+          bloc.add(RazaRecibida(RazaFormada.constructor(controller.text)));
           /* bloc.add(RazaRecibida(contro)); */
           controller.clear();
         }:null, child: Text('Siguiente'))
