@@ -1,5 +1,8 @@
+import 'package:dogapi/repositorio_verificacion.dart';
 import 'package:dogapi/vistas/vista_creandose.dart';
 import 'package:dogapi/vistas/vista_esperandoraza.dart';
+import 'package:dogapi/vistas/vista_razaconfirmada.dart';
+import 'package:dogapi/vistas/vista_razanoconfirmada.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +19,7 @@ class AplicacionInyectada extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        ClaseBloc blocVerificacion=ClaseBloc();
+        ClaseBloc blocVerificacion=ClaseBloc(RepositorioPruebaVerificacion());
         Future.delayed(Duration(seconds: 2),(){
           blocVerificacion.add(Creado());
         });
@@ -42,6 +45,12 @@ class Aplicacion extends StatelessWidget {
           }
           if (estado is SolicitandoRaza) {
             return VistaSolicitandoRazaSTF();
+          }
+          if (estado is MostrarRazaConfirmada) {
+            return VistaRazaConfirmada(registro: estado.registro, raza: estado.raza);
+          }
+          if (estado is MostrarRazaNoConfirmada) {
+            return VistaRazaNoConfirmada(raza: estado.raza);
           }
           return const Center(child: Text('ERROR'),);
         }),
